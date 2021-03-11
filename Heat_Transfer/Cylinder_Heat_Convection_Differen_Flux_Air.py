@@ -35,12 +35,12 @@ Data = np.append(Data,np.array([[h1],[h2],[h4],[h8],[h12]]),axis=1) # Put all da
 Df_Data = pd.DataFrame(Data, columns = ['Power [W/m]','Velocity [m/s]','Coefficient [W/m^2*K]'])
 print(Df_Data)
 
-Range_n = np.arange(0,100,0.0001)
-Range_C = np.arange(0,100,0.0001)
+Range_n = np.arange(0,30,0.000001)
+Range_C = np.arange(0,30,0.000001)
 
 def Vel_dependency(C,n,V,h):
-    Params = C*(V**n) 
-    i_array = np.where(np.isclose(Params, h,1e-4))[0][0]
+    Params = C*(V**n)
+    i_array = np.where(np.isclose(Params, h, 1e-5))[0][0]
     Val_n_C = C[i_array]
     return Val_n_C
 
@@ -50,6 +50,6 @@ y3= Vel_dependency(Range_C,Range_n,Df_Data.loc[2,'Velocity [m/s]'],Df_Data.iloc[
 y4= Vel_dependency(Range_C,Range_n,Df_Data.loc[3,'Velocity [m/s]'],Df_Data.iloc[3,2])
 y5= Vel_dependency(Range_C,Range_n,Df_Data.loc[4,'Velocity [m/s]'],Df_Data.iloc[4,2])
 
-Df_Data["Values of C and n"]= pd.Series([[y1],[y2],[y3],[y4],[y5]])
+Df_Data["Values of C and n"]= pd.Series([y1,y2,y3,y4,y5])
 
-print(Df_Data)
+print("\n\tExperimental data with Heat Coefficient Convection & Values C ,n\n",Df_Data)
