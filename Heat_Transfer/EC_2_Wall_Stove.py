@@ -9,103 +9,105 @@ import numpy as np
 sns.set()
 
 # Analysis in basis to Thermal Resistance Network
+class Wall_Stove:
 
-def Rconv1(h1,As):
-    # h = [W/m^2*K]
-    # As = [m^2]
-    y = 1/h1*As
-    return y
+    def Rconv1(self,h1, As):
+        # h = [W/m^2*K]
+        # As = [m^2]
+        y = 1 / h1 * As
+        return y
 
-def Rconv2(h2,As):
-    # h = [W/m^2*K]
-    # As = [m^2]
-    y = 1/h2*As
-    return y
+    def Rconv2(self,h2, As):
+        # h = [W/m^2*K]
+        # As = [m^2]
+        y = 1 / h2 * As
+        return y
 
-def K_prom_Brick(T1,T2,Tprom,K1,K2): # Calculus of K prom
-    m = (K2-K1)/(T2-T1)
-    y = m*(Tprom-T1)+K1
-    return y
+    def K_prom_Brick(self,T1, T2, Tprom, K1, K2):  # Calculus of K prom
+        m = (K2 - K1) / (T2 - T1)
+        y = m * (Tprom - T1) + K1
+        return y
 
-def Rcond_Brick(L1,K1,As):
-    # h = [W/m^3*K]
-    # As = [m^2]
-    y = L1/(K1*As)
-    return y
+    def Rcond_Brick(self,L1, K1, As):
+        # h = [W/m^3*K]
+        # As = [m^2]
+        y = L1 / (K1 * As)
+        return y
 
-def K_prom_Min_Wall(T1,T2,Tprom,K1,K2): # Calculus of K prom
-    m = (K2-K1)/(T2-T1)
-    y = m*(Tprom-T1)+K1
-    return y
+    def K_prom_Min_Wall(self,T1, T2, Tprom, K1, K2):  # Calculus of K prom
+        m = (K2 - K1) / (T2 - T1)
+        y = m * (Tprom - T1) + K1
+        return y
 
-def Rcond_Min_Wall(L1,K2,As):
-    # h = [W/m^3*K]
-    # As = [m^2]
-    y = L1/(K2*As)
-    return y
+    def Rcond_Min_Wall(self,L1, K2, As):
+        # h = [W/m^3*K]
+        # As = [m^2]
+        y = L1 / (K2 * As)
+        return y
 
-def Rcond_Al_1100(L1,K3,As):
-    # h = [W/m^3*K]
-    # As = [m^2]
-    y = L1/(K3*As)
-    return y
+    def Rcond_Al_1100(self,L1, K3, As):
+        # h = [W/m^3*K]
+        # As = [m^2]
+        y = L1 / (K3 * As)
+        return y
 
-def Emissivity_Al_prom(T1,T2,E1,E2,Tprom):
-    m = (E2 - E1) / (T2 - T1)
-    y = m * (Tprom - T1) + E1
-    return y
+    def Emissivity_Al_prom(self,T1, T2, E1, E2, Tprom):
+        m = (E2 - E1) / (T2 - T1)
+        y = m * (Tprom - T1) + E1
+        return y
 
-# Here we define the boundary condition 4 and determine T3
-def B_C_4(T_sup4,T_surr2,h_conv2,epsilon_Al,As):
-    h_comb = h_conv2 + epsilon_Al*5.670e-8*(T_sup4+T_surr2)*((T_sup4**2)+(T_surr2**2))
-    Q = h_comb*As*(T_sup4-T_surr2)
-    return Q
+    # Here we define the boundary condition 4 and determine T3
+    def B_C_4(self,T_sup4, T_surr2, h_conv2, epsilon_Al, As):
+        h_comb = h_conv2 + epsilon_Al * 5.670e-8 * (T_sup4 + T_surr2) * ((T_sup4 ** 2) + (T_surr2 ** 2))
+        Q = h_comb * As * (T_sup4 - T_surr2)
+        return Q
 
-def B_C_3(Tsup_2,T_sup4,Qsup4,Rcond4,K2,As):
-    L2 = (((Tsup_2-T_sup4)/Qsup4)-Rcond4)*(K2*As)
-    return L2
+    def B_C_3(self,Tsup_2, T_sup4, Qsup4, Rcond4, K2, As):
+        L2 = (((Tsup_2 - T_sup4) / Qsup4) - Rcond4) * (K2 * As)
+        return L2
 
-def B_C_2(Tsup_2,Tsurr_1,Qsup4,Rconv1,K2,As):
-    L1 = (((Tsurr_1 - Tsup_2) / Qsup4) - Rconv1) * (K2 * As)
-    return L1
+    def B_C_2(self,Tsup_2, Tsurr_1, Qsup4, Rconv1, K2, As):
+        L1 = (((Tsurr_1 - Tsup_2) / Qsup4) - Rconv1) * (K2 * As)
+        return L1
 
-def B_C_1(L1,hconv1,K1,Tsurr_1,Tsup_2):
-    C2 = ((L1*hconv1*Tsurr_1)-(K1*Tsup_2))/(-K1+L1*hconv1)
-    return C2
+    def B_C_1(self,L1, hconv1, K1, Tsurr_1, Tsup_2):
+        C2 = ((L1 * hconv1 * Tsurr_1) - (K1 * Tsup_2)) / (-K1 + L1 * hconv1)
+        return C2
 
-def C1(Tsup_2,Tsup_1,L1):
-    C1 =(Tsup_2-Tsup_1)/L1
-    return C1
+    def C1(self,Tsup_2, Tsup_1, L1):
+        C1 = (Tsup_2 - Tsup_1) / L1
+        return C1
 
-def T_z(C1,C2,z):
-    T = C1*z + C2
-    return T
+    def T_z(self,C1, C2, z):
+        T = C1 * z + C2
+        return T
 
 T_surr2_range = np.arange(15,35,0.1)
 Z = np.linspace(0,1,200)
 # L_Al_110 = np.arange(0,1,0.001) # Variation of thickness of the Aluminium layer -- Is fixed "caliber 14"
 
-R1 = Rconv1(30,1)
-K_Brick = K_prom_Brick(350+273.15,900+273.15,((350+900)/2)+273.15,0.18,0.31)
-K_Min_Wall = K_prom_Min_Wall(40+273.15,315+273.15,((40+315)/2)+273.15,0.04,0.125)
-R4 = Rcond_Al_1100(2.10/1000,222,1)
-R5 = Rconv2(30,1)
+Wall = Wall_Stove()
 
-Emissivity_Al = Emissivity_Al_prom(800,1400,0.65,0.45,35)
-Q_layer_4 = B_C_4(35+273.15,T_surr2_range+273.15,30,Emissivity_Al,1)
-L_layer_2 = B_C_3(700,35,Q_layer_4,R4,K_Min_Wall,1)
-L_layer_1 = B_C_2(700,1500,Q_layer_4,R1,K_Brick,1)
-C2 = B_C_1(L_layer_1,30,K_Brick,1500,700)
-C1 = C1(700,C2,L_layer_1)
-T = T_z(C1,C2,Z)
+R1 = Wall.Rconv1(30,1)
+K_Brick = Wall.K_prom_Brick(350+273.15,900+273.15,((350+900)/2)+273.15,0.18,0.31)
+K_Min_Wall = Wall.K_prom_Min_Wall(40+273.15,315+273.15,((40+315)/2)+273.15,0.04,0.125)
+R4 = Wall.Rcond_Al_1100(2.10/1000,222,1)
+R5 = Wall.Rconv2(30,1)
+
+Emissivity_Al = Wall.Emissivity_Al_prom(800,1400,0.65,0.45,35)
+Q_layer_4 = Wall.B_C_4(35+273.15,T_surr2_range+273.15,30,Emissivity_Al,1)
+L_layer_2 = Wall.B_C_3(700,35,Q_layer_4,R4,K_Min_Wall,1)
+L_layer_1 = Wall.B_C_2(700,1500,Q_layer_4,R1,K_Brick,1)
+C2 = Wall.B_C_1(L_layer_1,30,K_Brick,1500,700)
+C1 = Wall.C1(700,C2,L_layer_1)
+T = Wall.T_z(C1,C2,Z)
 
 # Temperature profile vs Thickness Wall
-T_15 = T_z(C1[0],C2[0],Z)
-T_20 = T_z(C1[50],C2[50],Z)
-T_25 = T_z(C1[100],C2[100],Z)
-T_30 = T_z(C1[150],C2[150],Z)
-T_35 = T_z(C1[199],C2[199],Z)
-
+T_15 = Wall.T_z(C1[0],C2[0],Z)
+T_20 = Wall.T_z(C1[50],C2[50],Z)
+T_25 = Wall.T_z(C1[100],C2[100],Z)
+T_30 = Wall.T_z(C1[150],C2[150],Z)
+T_35 = Wall.T_z(C1[199],C2[199],Z)
 
 plt.figure(1)
 plt.plot([350,900],[0.18,0.31],linestyle='--')
@@ -146,7 +148,6 @@ plt.ylim(0.2,5)
 plt.title("Variacion de Temperatura $T_{\infty2}$\nvs\nAncho Ladrillo Refractario",fontsize= 16)
 plt.xlabel("Temperatura $[^{\circ}C]$",fontsize= 14)
 plt.ylabel("Ancho del Muro $[m]$ ",fontsize= 14)
-
 
 # Variation of Q vs Temperature Surrounding 2
 plt.figure(6)
