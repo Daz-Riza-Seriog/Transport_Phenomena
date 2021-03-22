@@ -1,7 +1,7 @@
 # Code made for Sergio Andrés Díaz Ariza
 # 21 March 2021
 # License MIT
-# Transport Phenomena: Python Program-Assesment 3.1
+# Transport Phenomena: Python Program-Assesment 3.2
 
 import matplotlib.pyplot as plt
 import seaborn as sns
