@@ -39,7 +39,7 @@ class Optimice:
 
 class T_profile():
     def T(self,x,E_gen,C1,C2,K):
-        T = (-E_gen/2*K)*x**2 +C1*x + C2
+        T = ((-E_gen/(2*K))*x**2 +C1*x + C2)*2.425/1e4
         return T
 
 Opt = Optimice()
@@ -53,7 +53,7 @@ sol = minimize(Opt.objective_T,x0,method='SLSQP',constraints=constraint,options=
 
 T_prof = T_profile()
 length = np.arange(0,0.3,0.0001)
-T_length = T_prof.T(length,-sol.x[0],sol.x[1],sol.x[2],0.8)
+T_length = T_prof.T(length,-sol.x[0],sol.x[1],-sol.x[2],0.8)
 
 plt.figure(1)
 plt.plot(length,T_length,linestyle=(0, (3,1,1, 1)))
