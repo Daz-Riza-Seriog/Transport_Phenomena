@@ -58,8 +58,8 @@ Opt = Optimice()
 constraint_equal1 = {'type':'eq','fun':Opt.constraint_equal_Rmin}
 constraint_equal2 = {'type':'ineq','fun':Opt.constraint_inequal_Tmin}
 constraint_equal3 = {'type':'eq','fun':Opt.constraint_equal_B_C_1}
-constraint_equal4 = {'type':'eq','fun':Opt.constraint_inequal_Tsup_in}
-constraint_equal5 = {'type':'eq','fun':Opt.constraint_inequal_Tsup_out}
+constraint_equal4 = {'type':'ineq','fun':Opt.constraint_inequal_Tsup_in}
+constraint_equal5 = {'type':'ineq','fun':Opt.constraint_inequal_Tsup_out}
 constraint = [constraint_equal1,constraint_equal2,constraint_equal3,constraint_equal4,constraint_equal5]
 x0 = [0.15,-7e3,-6e2,-1e3] # This inital values are extracted from a first solution given by the method
 sol = minimize(Opt.objective_T,x0,method='SLSQP',constraints=constraint,options={'maxiter':1000})
