@@ -42,6 +42,10 @@ ___
    3.2 Wall Exothermic Generation:  
       * Know Tmax,h,k & B.C
       * Determine Egen_max Plot
+   
+   3.2 Wire Half Insulated Egen (Fins Analysis):  
+      * Know Egen
+      * Determine T pofile Plot
  
 2. ### _Mass Transfer_ :  
    
