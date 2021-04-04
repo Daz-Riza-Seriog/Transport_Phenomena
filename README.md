@@ -46,6 +46,7 @@ ___
    3.2 Wire Half Insulated Egen (Fins Analysis):  
       * Know Egen
       * Determine T pofile Plot
+   > Case Study: E_C_2_Wire_Cover
  
 2. ### _Mass Transfer_ :  
    
