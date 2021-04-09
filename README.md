@@ -47,6 +47,14 @@ ___
       * Know Egen
       * Determine T pofile Plot
    > Case Study: E_C_2_Wire_Cover
+   
+   4.1 Cylinder in contact with two surfaces and Act how Tin
+      * Know T surfaces contact, Length
+      * Determine T profile cylinder
+   
+   4.2 Compose Wall Req with convective Surfaces
+      * Know T surroundings, h,K
+      * Determine T profile of Wall
  
 2. ### _Mass Transfer_ :  
    
