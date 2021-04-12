@@ -55,6 +55,10 @@ ___
    4.2 Compose Wall Req with convective Surfaces
       * Know T surroundings, h,K
       * Determine T profile of Wall
+   
+   4.3 Iron cylinder compare with cover an uncover (Effect of bad cover)
+      * Know Pressure of convective internal environment, Tsurr, K, h
+      *  Determine the difference in T & Q with Cover and Uncover
  
 2. ### _Mass Transfer_ :  
    
