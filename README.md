@@ -75,7 +75,7 @@ ___
 
    3.1 Tank water in Building:  
    * Known (Volume, Height, Diameter)
-   * Determine Caudal, Time and Velocioties
+   * Determine Caudal, Time and Velocities
    
    3.2 Determine Caudal in a Tube:
      * Known (Variables)
@@ -91,7 +91,28 @@ ___
    
    > Case Study: E_C_4_ Friction Loss Tank build
    
+   4.1 Extern Flux Tower Tank:
+      * Know (Variables)
+      * Determine the maximum Velocities
+   
+   4.2 Hail Terminal Velocity:
+      * Know (Balance Force,  Bouguer Force)
+      * Determine the Velocity of Fall
+
+   4.3 Balls in Reactor:
+      * Know (Balance Force)
+      * Determine the velocity of Fall
+
+   4.4 Trash Can:
+      * Know (Torque Balance)
+      * Determine the velocity of fall of the Trash
+
+   
 4. ### _Mass Transfer_ :  
+   >> **_Concepts : Mecanism of Flux Nab, General Balance of Mass and Reaction, Diffusivity ._**
+
+   > Case Study: E_C_1 Sphere with Shell and Reaction with Border Conditions
+
    
 
 
